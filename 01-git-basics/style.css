@@ -1,1 +1,44 @@
 /* Add any styling you want */
+/*Colors and fonts*/
+body{
+	background-color: #E8F1F2;
+	color:#3B2C35 ;
+	font-family: Georgia, serif;
+	font-size:16px;
+	font-weight: lighter;
+}
+
+h1,h2,h3{
+	font-family: Helvetica, sans-serif;
+}
+
+h1{
+    color: #56E39F;
+    font-size: 32px;
+    font-weight: 700
+    letter-spacing: 5px;
+}
+
+h2{
+	color: #56E39F;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/*Custom designs with class*/
+.container{
+	width: 700px;
+	margin: 10px auto
+}
+.card-white{
+	background: white;
+	padding: 60px;
+	margin: 50px;
+	box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+	border-radius: 4px;
+	text-align:center;
+}
+.img-circle{
+	width: 150px;
+	border-radius: 90%;
+}
