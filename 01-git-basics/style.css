@@ -1,15 +1,18 @@
 /* Add any styling you want */
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Source+Sans+Pro:300,400,400i,700&display=swap");
+
 /*Colors and fonts*/
 body{
 	background-color: #E8F1F2;
 	color:#3B2C35 ;
-	font-family: Georgia, serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size:16px;
 	font-weight: lighter;
 }
 
 h1,h2,h3{
-	font-family: Helvetica, sans-serif;
+  font-family: 'Roboto Slab', serif;
+  font-weight:bold;
 }
 
 h1{
@@ -26,10 +29,25 @@ h2{
 }
 
 /*Custom designs with class*/
+.page-content {
+  margin-left: 50px;
+}
+
 .container{
 	width: 700px;
 	margin: 10px auto
 }
+@media (max-width: 760px){
+	.container{
+		width:600px;
+	}
+}
+@media (max-width: 500px){
+	.container{
+		width:400px;
+	}
+}
+
 .card-white{
 	background: white;
 	padding: 60px;
