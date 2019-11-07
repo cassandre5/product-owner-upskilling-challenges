@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Activity</title>
+    <%= stylesheet '/style.css' %>
+  </head>
+  <body>
+
+  <div class="banner-activity"style="background-image: url(<%=@activity["photo"]%>)" title="<%=@activity["name"]%>">
+    <%# <div class="container"> %>
+      <h1><%= @activity["name"] %></h1>
+    <%# </div> %>
+      <span class="title-category"><%= @activity["category"].upcase %></span>
+
+  </div>
+
+  <div class="card">
+
+    <h4><%= @activity["city"] %></h4>
+    <p>🕒 <%= @activity["duration"] %> minutes</p>
+    <p>👪 <%= @activity["number_participants"]%> participants</p>
+    <h4><%= @activity["price"] %> €</h4>
+    <a href="#" class="btn-book">Book a session</a>
+  </div>
