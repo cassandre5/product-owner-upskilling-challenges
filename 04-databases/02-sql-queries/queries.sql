@@ -98,7 +98,10 @@ order by teams.name
 -- Finance &   2
 -- UI / UX     2
 -- Customer S  1
-
+select name, count(*) as total_sessions from teams
+join team_building_sessions on team_building_sessions.team_id = teams.id
+group by teams.name
+order by total_sessions desc
 -- Get all the employee names, team names and site names that have never attended a team building session
 -- TODO: SELECT ...
 -- Expected result:
@@ -107,7 +110,11 @@ order by teams.name
 -- Harmony     Florin      Channels    Paris 13ème
 -- Julia       Ivanets     Channels    Paris 13ème
 -- Pierre      Pellan      Channels    Paris 13ème
-
+select employees.first_name, employees.last_name, teams.name as team, sites.name as site from employees
+join teams on teams.id = employees.team_id
+left outer join participations on participations.employee_id = employees.id
+join sites on sites.id = employees.site_id
+where team_building_session_id is null
 -- [NEW AGGREGATE] Get the budget spent on team building sessions per team, sorted by most expensive to leASt expensive
 -- TODO: SELECT ...
 -- Expected result:
@@ -120,7 +127,10 @@ order by teams.name
 -- Customer Suc  360
 -- Product Owne  267
 -- UI / UX       240
-
+select teams.name, sum(price) as total_price from teams
+join team_building_sessions on team_building_sessions.team_id = teams.id
+group by teams.name
+order by total_price desc
 -- Get the site names and total number of team building sessions done, sorted by top sites
 -- TODO: SELECT ...
 -- Expected result:
@@ -128,3 +138,9 @@ order by teams.name
 -- -------------  --------------
 -- Ile de Nantes  12
 -- Paris 13ème    10
+select sites.name, count(distinct team_building_session_id) as total_sessions from participations
+join team_building_sessions on team_building_sessions.id = participations.team_building_session_id
+join employees on employees.id = participations.employee_id
+join sites on sites.id = employees.site_id
+group by sites.name
+order by total_sessions desc
