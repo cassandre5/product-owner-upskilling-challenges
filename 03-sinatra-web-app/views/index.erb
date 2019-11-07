@@ -17,26 +17,27 @@
 		</div>
 
 
+    <div class="cards">
+      <% @activities.each do |activity| %>
+        <div class="card">
 
-    <% @activities.each do |activity| %>
-      <div class="card">
+          <div>
+            <h3><%= activity["name"] %></h3>
+            <div class="image" style="background-image: url(<%=activity["photo"]%>)" title="<%=activity["name"]%>"></div>
+          </div>
+          <div>
+            <span class="activity"><%= activity["category"].upcase %></span>
+            <h4><%= activity["city"] %></h4>
+            <p>🕒 <%= activity["duration"] %> minutes</p>
+            <p>👪 <%= activity["number_participants"]%> participants</p>
+            <h4><%= activity["price"] %> €</h4>
+            <a href="#" class="btn-orange">Book a session</a>
+          </div>
 
-        <div>
-          <h3><%= activity["name"] %></h3>
-          <img src="<%=activity["photo"]%>" alt="<%=activity["name"]%>">
+
         </div>
-        <div>
-          <p><%= activity["category"].upcase %></p>
-          <h4><%= activity["city"] %></h4>
-          <p><%= activity["duration"] %> minutes</p>
-          <p><%= activity["number_participants"]%> participants</p>
-          <p><%= activity["price"] %> euros</p>
-          <a href="#" class="btn-green">Réserver</a>
-        </div>
-
-
-      </div>
-    <% end %>
+      <% end %>
+    </div>
 
   </body>
 </html>
