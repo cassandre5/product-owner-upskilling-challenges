@@ -8,7 +8,35 @@
     <%= stylesheet '/style.css' %>
   </head>
   <body>
-    <h1>Activities</h1>
-    <p>TODO: display all the activities</p>
+
+    <div class="banner">
+			<div class="container">
+				<h1>Team Building - Activities</h1>
+				<h2>Discover our activities</h2>
+			</div>
+		</div>
+
+
+
+    <% @activities.each do |activity| %>
+      <div class="card">
+
+        <div>
+          <h3><%= activity["name"] %></h3>
+          <img src="<%=activity["photo"]%>" alt="<%=activity["name"]%>">
+        </div>
+        <div>
+          <p><%= activity["category"].upcase %></p>
+          <h4><%= activity["city"] %></h4>
+          <p><%= activity["duration"] %> minutes</p>
+          <p><%= activity["number_participants"]%> participants</p>
+          <p><%= activity["price"] %> euros</p>
+          <a href="#" class="btn-green">Réserver</a>
+        </div>
+
+
+      </div>
+    <% end %>
+
   </body>
 </html>
