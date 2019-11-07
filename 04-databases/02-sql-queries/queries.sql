@@ -81,7 +81,11 @@ order by name
 -- Business Development
 -- Product Owner
 -- R&D
-
+select distinct teams.name from teams
+join team_building_sessions on team_building_sessions.team_id = teams.id
+join activities on activities.id = team_building_sessions.activity_id
+where activities.category = 'Adventure'
+order by teams.name
 -- Get the team names and total number of team building sessions done, sorted by top teams
 -- TODO: SELECT ...
 -- Expected result:
