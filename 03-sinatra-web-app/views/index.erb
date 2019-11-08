@@ -7,6 +7,7 @@
     <title>Team Building - Activities</title>
     <%= stylesheet '/style.css' %>
   </head>
+
   <body>
 
     <div class="banner">
@@ -25,15 +26,15 @@
             <h3><%= activity["name"] %></h3>
             <div class="card-image" style="background-image: url(<%=activity["photo"]%>)" title="<%=activity["name"]%>"></div>
           </div>
+
           <div>
             <span class="activity"><%= activity["category"].upcase %></span>
             <h4>🌍 <%= activity["city"] %></h4>
             <p>🕒 <%= activity["duration"] %> minutes</p>
             <p>👪 <%= activity["number_participants"]%> participants</p>
             <h4>💳 <%= activity["price"] %> €</h4>
-            <a href="#" class="btn-book">Book a session</a>
+            <a href="/activities/<%= activity["id"] %>" class="btn-book">Book a session</a>
           </div>
-
 
         </div>
       <% end %>

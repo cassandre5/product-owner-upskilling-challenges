@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Activity</title>
+    <title><%= @activity["name"] %></title>
     <%= stylesheet '/style.css' %>
   </head>
+
   <body>
 
   <div class="banner-activity"style="background-image: url(<%=@activity["photo"]%>)" title="<%=@activity["name"]%>">
@@ -18,10 +18,19 @@
   </div>
 
   <div class="card">
-
     <p>🌍 <%= @activity["city"] %></p>
     <p>🕒 <%= @activity["duration"] %> minutes</p>
     <p>👪 <%= @activity["number_participants"]%> participants</p>
     <p>💳 <%= @activity["price"] %> €</p>
     <a href="#" class="btn-book">Book a session</a>
   </div>
+
+  <div class="card">
+    <h4>💌 Comments from real customers:</h4>
+    <span class="comment">"This is an activity you want to do before you die." (Jessica D.)</span>
+    <span class="comment">"Best activity ever (I was not paid to write this)." (Daniel H.)</span>
+    <h4>❤️ Satisfaction rate: 100%</h4>
+  </div>
+
+  </body>
+</html>
