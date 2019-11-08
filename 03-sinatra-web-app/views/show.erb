@@ -11,7 +11,7 @@
 
   <div class="banner-activity"style="background-image: url(<%=@activity["photo"]%>)" title="<%=@activity["name"]%>">
     <%# <div class="container"> %>
-      <h1><%= @activity["name"] %></h1>
+      <span class="title-name"><%= @activity["name"] %></span>
     <%# </div> %>
       <span class="title-category"><%= @activity["category"].upcase %></span>
 
@@ -19,9 +19,9 @@
 
   <div class="card">
 
-    <h4><%= @activity["city"] %></h4>
+    <p>🌍 <%= @activity["city"] %></p>
     <p>🕒 <%= @activity["duration"] %> minutes</p>
     <p>👪 <%= @activity["number_participants"]%> participants</p>
-    <h4><%= @activity["price"] %> €</h4>
+    <p>💳 <%= @activity["price"] %> €</p>
     <a href="#" class="btn-book">Book a session</a>
   </div>
