@@ -108,12 +108,6 @@ namespace "/v2" do
     json "activities" => activities
   end
 
-  # filter on category
-  get "/activities?category=:category" do
-    activities = DB.execute("SELECT * from activities where category = '#{params["category"]}'';")
-    json "activities" => activities
-  end
-
 end
 
 namespace "/doc" do
