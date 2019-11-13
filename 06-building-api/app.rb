@@ -16,8 +16,55 @@ get "/" do
   json "name" => "Team Building API", "status" => "Running"
 end
 
+# API v1
 namespace "/v1" do
-  # TODO: your code goes here
+
+  # list of all activities
+  get "/activities" do
+    activities = DB.execute("SELECT * FROM activities order by name;")
+    json "activities" => activities
+  end
+
+  # details of one activity
+  get "/activities/:id" do
+    activities = DB.execute("SELECT * from activities where id = #{params["id"]};")
+    json "activities" => activities
+  end
+
+end
+
+# API v2
+namespace "/v2" do
+
+  # list of all activities - filters
+  get "/activities" do
+    if params["city"] !=nil
+      activities = DB.execute("SELECT * from activities where city = '#{params["city"]}' order by name;")
+      json "activities" => activities
+    elsif params["category"] !=nil
+      activities = DB.execute("SELECT * from activities where category = '#{params["category"]}' order by name;")
+      json "activities" => activities
+    elsif params["search"] !=nil
+      activities = DB.execute("SELECT * from activities where name like '%#{params["search"]}%' order by name;")
+      json "activities" => activities
+    else
+    activities = DB.execute("SELECT * FROM activities order by name;")
+    json "activities" => activities
+    end
+  end
+
+  # details of one activity
+  get "/activities/:id" do
+    activities = DB.execute("SELECT * from activities where id = #{params["id"]};")
+    json "activities" => activities
+  end
+
+  # filter on category
+  get "/activities?category=:category" do
+    activities = DB.execute("SELECT * from activities where category = '#{params["category"]}'';")
+    json "activities" => activities
+  end
+
 end
 
 namespace "/doc" do
