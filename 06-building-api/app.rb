@@ -37,20 +37,47 @@ end
 namespace "/v2" do
 
   # list of all activities - filters
+  query = "SELECT * FROM activities"
   get "/activities" do
-    if params["city"] !=nil
-      activities = DB.execute("SELECT * from activities where city = '#{params["city"]}' order by name;")
-      json "activities" => activities
-    elsif params["category"] !=nil
-      activities = DB.execute("SELECT * from activities where category = '#{params["category"]}' order by name;")
-      json "activities" => activities
-    elsif params["search"] !=nil
-      activities = DB.execute("SELECT * from activities where name like '%#{params["search"]}%' order by name;")
-      json "activities" => activities
-    else
-    activities = DB.execute("SELECT * FROM activities order by name;")
-    json "activities" => activities
+    #if params["city"] !=nil
+      #activities = DB.execute("SELECT * from activities where city = '#{params["city"]}' order by name;")
+      #query_city = " city = '#{params["city"]}' "
+    #end
+
+    #if params["category"] !=nil
+      #activities = DB.execute("SELECT * from activities where category = '#{params["category"]}' order by name;")
+      #query_category = " category = '#{params["category"]}' "
+    #end
+
+    #if params["search"] !=nil
+      #activities = DB.execute("SELECT * from activities where name like '%#{params["search"]}%' order by name;")
+      #query_search = " name like '%#{params["search"]}%' order by name;"
+    #end
+
+    #elsif params["city"] !=nil && params["category"] !=nil && params["search"] =nil
+      #activities = DB.execute("SELECT * from activities where city = '#{params["city"]}' and category = '#{params["category"]}' order by name;")
+      #json "activities" => activities
+
+    params.each_with_index do |(key,value),index|
+      if index ==0
+        query << " WHERE"
+      else query << " AND"
+      end
+
+      case key
+        when "city"
+          query << " city = '#{value}'"
+        when "category"
+          query << " category = '#{value}'"
+        when "search"
+          query << " name like '%#{value}%'"
+      end
+
     end
+    query << " order by name;"
+
+    activities = DB.execute(query)
+    json "activities" => activities
   end
 
   # details of one activity
