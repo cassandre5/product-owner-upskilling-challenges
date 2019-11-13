@@ -1,1 +1,179 @@
 /* Add any styling you want */
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Source+Sans+Pro:300,400,400i,700&display=swap");
+
+/*Colors and fonts*/
+body{
+	background-color: #f8f8f8;
+	color:#3B2C35 ;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size:16px;
+  font-weight: lighter;
+  /* text-align: center; */
+}
+
+h1,h2,h3{
+  font-family: 'Roboto Slab', serif;
+	font-weight:bold;
+}
+
+h1{
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 5px;
+}
+
+h2{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+h4{
+	font-weight:bold;
+}
+
+.activity{
+	font-weight:bold;
+	color: #e3b04b;
+}
+
+.title-name{
+	font-family: 'Roboto Slab', serif;
+	font-size: 32px;
+  font-weight: 700;
+	background-color: rgba(227, 176, 75, 0.8);
+	/*background-color: rgba(0,0,0,0.2);*/
+	color: #f8f8f8;
+	padding:10px 20px;
+}
+
+.title-category{
+	font-weight:bold;
+	background-color: #e3b04b;
+	color: #f8f8f8;
+	padding:10px 20px;
+	position: absolute;
+	bottom: -0.5em;
+}
+
+
+/*Banner*/
+
+.banner{
+	background-image: url(../images/background.jpg);
+	color:white;
+  padding:110px 0px;
+	background-size: cover;
+	background-position: center bottom;
+}
+.banner h1{
+  font-size: 50px;
+  text-align: center;
+}
+.banner h2{
+	font-size: 30px;
+	font-weight: lighter;
+	opacity:0.8;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+
+.banner-activity{
+	color:white;
+  padding:250px 0px;
+	background-size: cover;
+	background-position: center;
+	position:relative;
+	display: flex;
+	justify-content: center;
+}
+.banner-activity h1{
+	margin:0;
+}
+
+/*Container*/
+.container{
+	width:700px;
+	margin: 40px auto;
+}
+@media (max-width: 760px){
+	.container{
+		width:600px;
+	}
+}
+@media (max-width: 500px){
+	.container{
+		width:400px;
+	}
+}
+
+/*Cards*/
+.cards{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.card{
+	padding:20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+	border-radius: 4px;
+	margin:10px;
+	flex-basis:250px;
+	flex-grow: 1;
+}
+
+.card h3{
+	padding-left: 20px;
+	font-size: 20px;
+	margin-top: 0px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-image{
+	height: 200px;
+	width: 200px;
+	background-size: cover;
+	border-radius: 4px;
+}
+.activity-image{
+	color:white;
+
+	height: 300px;
+	width: 900px;
+	background-size: cover;
+	background-position: center;
+}
+
+/*Button*/
+.btn-book{
+	background-color: #e3b04b;
+	padding: 15px 20px;
+	border-radius: 4px;
+	color:white;
+	font-weight: bold;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+a{
+	text-decoration: none;
+}
+
+/*comment*/
+.comment{
+	font-style:italic;
+}
+
+/*div de droite*/
+.right-div{
+  width:200px;
+}
+
+/*div de gauche*/
+.left-div{
+  max-width:230px;
+}

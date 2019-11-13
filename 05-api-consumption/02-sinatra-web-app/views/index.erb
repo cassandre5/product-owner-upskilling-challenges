@@ -7,8 +7,42 @@
     <title>Team Building - Activities</title>
     <%= stylesheet '/style.css' %>
   </head>
+
   <body>
-    <h1>Activities</h1>
-    <p>TODO: display all the activities</p>
+
+    <div class="banner">
+			<div class="container">
+				<h1>Team Building - Activities</h1>
+				<h2>Discover our activities</h2>
+			</div>
+		</div>
+
+    <div class="card">
+      <a href="/?location=Nantes" class="btn-book">Nantes</a>
+      <a href="/?location=Paris" class="btn-book">Paris</a>
+    </div>
+
+    <div class="cards">
+      <% @activities.each do |activity| %>
+        <div class="card">
+
+          <div class="left-div">
+            <h3 title="<%= activity["name"] %>"><%= activity["name"] %></h3>
+            <div class="card-image" style="background-image: url(<%=activity["photo_url"]%>)" title="<%=activity["name"]%>"></div>
+          </div>
+
+          <div class="right-div">
+            <span class="activity"><%= activity["category"].upcase %></span>
+            <h4>🌍 <%= activity["city"] %></h4>
+            <p>🕒 <%= activity["duration"] %> minutes</p>
+            <p>👪 <%= activity["participants_count"]%> participants</p>
+            <h4>💳 <%= activity["price"] %> €</h4>
+            <a href="/activities/<%= activity["id"] %>" class="btn-book">Book a session</a>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+
   </body>
 </html>
