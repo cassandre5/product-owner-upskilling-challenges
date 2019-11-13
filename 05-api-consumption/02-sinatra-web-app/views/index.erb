@@ -18,7 +18,8 @@
 		</div>
 
     <div class="card">
-
+      <h3>Filter by city: </h3>
+      <a href="/" class="btn-book" >All</a>
       <% tab_cities= []%>
       <% @all_activities.each do |activity| %>
         <% tab_cities << activity["city"] %>
@@ -34,6 +35,8 @@
       <a href="/?location=Paris" class="btn-book">Paris</a>
       %>
 
+      <h3>Or by category: </h3>
+      <a href="/" class="btn-book" >All</a>
       <% tab_categories= []%>
       <% @all_activities.each do |activity| %>
         <% tab_categories << activity["category"] %>
