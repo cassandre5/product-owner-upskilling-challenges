@@ -9,11 +9,22 @@ enable :static
 
 # -----------------------retrieve all the activities from the API----------------
 get "/" do
+  # -------- appel API de toutes les catégories pour afficher les filtres-------------------
+  url0 = "https://team-building-api.cleverapps.io/v2/activities"
+  params0 = {"fields" => "id,name,category,city,duration,participants_count,price,photo_url"}
+  response0=RestClient.get(url0, "params" => params0)
 
+  payload0=JSON.parse(response0.body)
+  ALL_ACTIVITIES=payload0["activities"]
+
+  @all_activities = ALL_ACTIVITIES
+
+  # -------- appel API avec les filtres-----------------
   location=params["location"]
+  category=params["category"]
 
   url1 = "https://team-building-api.cleverapps.io/v2/activities"
-  params1 = {"city" => "#{location}", "fields" => "id,name,category,city,duration,participants_count,price,photo_url"}
+  params1 = {"city" => "#{location}", "category" => "#{category}","fields" => "id,name,category,city,duration,participants_count,price,photo_url"}
   response1=RestClient.get(url1, "params" => params1)
 
   payload1=JSON.parse(response1.body)

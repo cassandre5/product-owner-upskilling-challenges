@@ -18,8 +18,33 @@
 		</div>
 
     <div class="card">
+
+      <% tab_cities= []%>
+      <% @all_activities.each do |activity| %>
+        <% tab_cities << activity["city"] %>
+      <% end %>
+      <% tab_cities = tab_cities.uniq %>
+
+      <% tab_cities.each do |city| %>
+        <a href="/?location=<%= city %>" class="btn-book"><%= city %></a>
+      <% end %>
+
+      <%#
       <a href="/?location=Nantes" class="btn-book">Nantes</a>
       <a href="/?location=Paris" class="btn-book">Paris</a>
+      %>
+
+      <% tab_categories= []%>
+      <% @all_activities.each do |activity| %>
+        <% tab_categories << activity["category"] %>
+      <% end %>
+      <% tab_categories = tab_categories.uniq %>
+
+      <% tab_categories.each do |category| %>
+        <a href="/?category=<%= category %>" class="btn-book"><%= category %></a>
+      <% end %>
+
+
     </div>
 
     <div class="cards">
