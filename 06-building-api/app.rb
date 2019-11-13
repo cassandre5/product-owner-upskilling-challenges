@@ -28,7 +28,8 @@ namespace "/v1" do
   # details of one activity
   get "/activities/:id" do
     activities = DB.execute("SELECT * from activities where id = #{params["id"]};")
-    json "activities" => activities
+    activity=activities.first
+    json "activity" => activity
   end
 
 end
@@ -37,7 +38,7 @@ end
 namespace "/v2" do
 
   # list of all activities - filters
-  query = "SELECT * FROM activities"
+
   get "/activities" do
     #if params["city"] !=nil
       #activities = DB.execute("SELECT * from activities where city = '#{params["city"]}' order by name;")
@@ -58,22 +59,43 @@ namespace "/v2" do
       #activities = DB.execute("SELECT * from activities where city = '#{params["city"]}' and category = '#{params["category"]}' order by name;")
       #json "activities" => activities
 
-    params.each_with_index do |(key,value),index|
-      if index ==0
-        query << " WHERE"
-      else query << " AND"
-      end
 
-      case key
-        when "city"
-          query << " city = '#{value}'"
-        when "category"
-          query << " category = '#{value}'"
-        when "search"
-          query << " name like '%#{value}%'"
-      end
+    #params.each_with_index do |(key,value),index|
+      #if index ==0
+        #query << " WHERE"
+      #else query << " AND"
+      #end
 
+      #case key
+        #when "city"
+          #query << " city = '#{value}'"
+        #when "category"
+          #query << " category = '#{value}'"
+        #when "search"
+          #query << " name like '%#{value}%'"
+      #end
+
+    #end
+    query = "SELECT * FROM activities"
+
+    conditions = []
+
+    if params["city"] && params["city"] != ""
+      conditions << "city = '#{params["city"]}'"
     end
+
+    if params["category"] && params["category"] != ""
+      conditions << "category = '#{params["category"]}'"
+    end
+
+    if params["search"] && params["search"] != ""
+      conditions << "name like '%#{params["search"]}%'"
+    end
+
+    if conditions.empty? == false
+      query << " WHERE #{conditions.join(" AND ")}"
+    end
+
     query << " order by name;"
 
     activities = DB.execute(query)
